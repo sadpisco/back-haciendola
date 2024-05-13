@@ -5,10 +5,12 @@ const xlsx = require('xlsx');
 
 const RegisterProductsFromExcel = async function (req, res) {
     try {
+        //Si es que la funcion no lee el archivo excel guardado en la carpeta raiz del proyecto, reubicar la direccion al archivo.
         const workbook = xlsx.readFile('../../pruebatecnica.xlsx');
         const sheetName = workbook.SheetNames[0];
         const worksheet = workbook.Sheets[sheetName];
         const datos = xlsx.utils.sheet_to_json(worksheet);
+
         for(let i = 0; i <= datos.length - 1; i++){
             let productToRegister = datos[i];
             productToRegister.grams = parseFloat(productToRegister.grams);

@@ -1,3 +1,7 @@
+require = require("esm")(module, {
+    cjs: true
+});
+
 const express = require('express');
 const morgan = require ('morgan');
 const cors = require('cors');

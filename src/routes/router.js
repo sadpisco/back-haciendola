@@ -12,11 +12,13 @@ const GetAllProducts = require('../handlers/Products/GetAllProducts.js');
 const GetProduct = require('../handlers/Products/GetProduct.js');
 const UpdateProduct = require('../handlers/Products/UpdateProduct.js');
 const AuthUser = require('../handlers/Users/AuthUser.js');
+const JwtAuth = require('../handlers/Users/jwtAuth.js');
 
-
+//Playground
 router.get('/', (req, res) => {
     res.status(201).send('Main Lobby');
 });
+
 //Users CRUD
 router.post('/user', CreateUser);
 router.delete('/user/:id', DeleteUser);
@@ -24,6 +26,7 @@ router.patch('/user/:id', UpdateUser);
 router.get('/user', GetAllUsers);
 router.get('/user/:id', GetUser);
 router.get('/authUser', AuthUser);
+router.get('/jwtAuth', JwtAuth);
 
 //Products CRUD
 router.post('/product', CreateProduct);
@@ -32,7 +35,7 @@ router.get('/product', GetAllProducts);
 router.get('/product/:id', GetProduct);
 router.patch('/product/:id', UpdateProduct);
 
-//From Excel to Database
+//From Excel to DB
 router.get('/productExcel', RegisterProductsFromExcel);
 
 

@@ -1,7 +1,8 @@
 const { Users } = require('../../database.js');
+const { randomUUID } = require('crypto');
+const jwt = require('jsonwebtoken');
 
-const AuthUser = async function(req, res){
-    let attemps = 0;
+const JwtAuth = async function(req, res){
     try {
         const { username, password } = req.body;
         let foundUser = await Users.findAll({
@@ -9,6 +10,7 @@ const AuthUser = async function(req, res){
                 username: username
             }
         });
+
         if (foundUser.length > 0){
             let matchingPass = await Users.findAll({
                 where: {
@@ -17,29 +19,30 @@ const AuthUser = async function(req, res){
                 }
             });
             if (matchingPass.length > 0){
-                res.status(202).send({
-                    status: true,
-                    authenticated: true
+                jwt.sign({matchingPass: matchingPass}, 'secretKey', (error, token) => {
+                    res.json({
+                        token
+                    });
                 });
+                // console.log(matchingPass);
+                // res.status(200).json(matchingPass);
             } else {
-                attemps = attemps + 1;
                 res.status(500).send({
                     message: `Wrong password for ${username}.`,
-                    failedPasswordAttemps: attemps,
                     status: false
                 });
             };
         } else {
             res.status(500).send({
                 message: `${username} is not registered on our platform.`,
-                failedPasswordAttemps: attemps,
                 status: false
             });
         };
+
     } catch (error) {
         console.log(error);
         res.status(500).send({ message: error.message });
     };
 };
 
-module.exports = AuthUser;
+module.exports = JwtAuth; 
