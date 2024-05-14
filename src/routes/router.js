@@ -13,6 +13,7 @@ const GetProduct = require('../handlers/Products/GetProduct.js');
 const UpdateProduct = require('../handlers/Products/UpdateProduct.js');
 const AuthUser = require('../handlers/Users/AuthUser.js');
 const JwtAuth = require('../handlers/Users/jwtAuth.js');
+const ForgotPassword = require('../handlers/Users/ForgotPassword.js');
 
 //Playground
 router.get('/', (req, res) => {
@@ -27,6 +28,7 @@ router.get('/user', GetAllUsers);
 router.get('/user/:id', GetUser);
 router.get('/authUser', AuthUser);
 router.get('/jwtAuth', JwtAuth);
+router.get('/forgotPassword', ForgotPassword);
 
 //Products CRUD
 router.post('/product', CreateProduct);
