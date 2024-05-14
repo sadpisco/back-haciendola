@@ -1,9 +1,9 @@
 const { Users } = require('../../database.js');
 
 const AuthUser = async function(req, res){
-    let attemps = 0;
     try {
         const { username, password } = req.body;
+        console.log(username, password);
         let foundUser = await Users.findAll({
             where: {
                 username: username
@@ -19,20 +19,18 @@ const AuthUser = async function(req, res){
             if (matchingPass.length > 0){
                 res.status(202).send({
                     status: true,
-                    authenticated: true
+                    authenticated: true,
+                    user: matchingPass[0]
                 });
             } else {
-                attemps = attemps + 1;
-                res.status(500).send({
+                res.status(404).send({
                     message: `Wrong password for ${username}.`,
-                    failedPasswordAttemps: attemps,
                     status: false
                 });
             };
         } else {
-            res.status(500).send({
+            res.status(404).send({
                 message: `${username} is not registered on our platform.`,
-                failedPasswordAttemps: attemps,
                 status: false
             });
         };

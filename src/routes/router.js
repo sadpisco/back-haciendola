@@ -26,7 +26,7 @@ router.delete('/user/:id', DeleteUser);
 router.patch('/user/:id', UpdateUser);
 router.get('/user', GetAllUsers);
 router.get('/user/:id', GetUser);
-router.get('/authUser', AuthUser);
+router.post('/authUser', AuthUser);
 router.get('/jwtAuth', JwtAuth);
 router.get('/forgotPassword', ForgotPassword);
 
