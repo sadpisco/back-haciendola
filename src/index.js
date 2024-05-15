@@ -18,6 +18,4 @@ conn.sync({force: false}).then(()=> {
     });
 }).catch( error => console.log(error));
 
-console.log(`Server is listening on ${port}`);
-
 module.exports = app;
