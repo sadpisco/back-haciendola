@@ -29,15 +29,15 @@ const sequelize = new Sequelize(
     }
 );
 
-const testingConection = async function(){
-    try {
-        await sequelize.authenticate();
-        console.log(`Succesfully connected to ${DB_NAME} in the PORT ${DB_PORT}`);
-    } catch (error) {
-       console.log(error);
-    };
-  };
-  testingConection();
+// const testingConection = async function(){
+//     try {
+//         await sequelize.authenticate();
+//         console.log(`Succesfully connected to ${DB_NAME} in the PORT ${DB_PORT}`);
+//     } catch (error) {
+//        console.log(error);
+//     };
+//   };
+//   testingConection();
 
   const basename = path.basename(__filename);
   const modelDefiners = [];
