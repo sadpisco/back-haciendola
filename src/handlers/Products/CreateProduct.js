@@ -17,7 +17,7 @@ const CreateProduct = async function(req, res){
                     barcode: product.barcode
                 }
             });
-            res.status(202).send(`Product SKU ${product.sku} has succesfully been registered.`);
+            res.status(202).send({message: `Product SKU ${product.sku} has succesfully been registered.`});
         } else {
             let newProduct = await Products.findOrCreate({
                 where: {
@@ -31,7 +31,7 @@ const CreateProduct = async function(req, res){
                     comparePrice: product.comparePrice
                 }
             });
-            res.status(202).send(`Product SKU ${product.sku} has succesfully been registered with no bardcode.`)
+            res.status(202).send({message: `Product SKU ${product.sku} has succesfully been registered with no bardcode.`})
         };
     } catch (error) {
         console.log(error);

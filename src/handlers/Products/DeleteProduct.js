@@ -14,9 +14,9 @@ const DeleteProduct = async function(req, res){
                     sku: id
                 }
             });
-            res.status(202).send(`Product SKU ${id} was succesfully deleted.`)
+            res.status(202).send({message: `Product SKU ${id} was succesfully deleted.`})
         } else {
-            res.status(404).send(`Product SKU ${id} was not found on the DB.`);
+            res.status(404).send({message:`Product SKU ${id} was not found on the DB.`});
         };
     } catch (error) {
         console.log(error);

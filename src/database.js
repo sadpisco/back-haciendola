@@ -7,12 +7,25 @@ const DB_USER = process.env.DB_USER;
 const DB_PASSWORD = process.env.DB_PASSWORD;
 const DB_PORT = process.env.DB_PORT;
 const DB_NAME = process.env.DB_NAME;
+const DB_CONNECTION = process.env.DB_CONNECTION;
 
 const sequelize = new Sequelize(
-    `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`,
+    // `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`,
+    // {
+    //     logging: false,
+    //     native: false
+    // }
+        DB_CONNECTION,
     {
         logging: false,
-        native: false
+        native: false,
+        dialectOptions: {
+          ssl: true, // Desactiva SSL
+          ssl: {
+            require: true,
+            rejectUnauthorized: false
+          }
+        },
     }
 );
 

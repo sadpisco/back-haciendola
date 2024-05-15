@@ -23,7 +23,7 @@ router.get('/', (req, res) => {
 //Users CRUD
 router.post('/user', CreateUser);
 router.delete('/user/:id', DeleteUser);
-router.patch('/user/:id', UpdateUser);
+router.post('/user/:id', UpdateUser);
 router.get('/user', GetAllUsers);
 router.get('/user/:id', GetUser);
 router.post('/authUser', AuthUser);
@@ -35,7 +35,7 @@ router.post('/product', CreateProduct);
 router.delete('/product/:id', DeleteProduct);
 router.get('/product', GetAllProducts);
 router.get('/product/:id', GetProduct);
-router.patch('/product/:id', UpdateProduct);
+router.post('/product/:id', UpdateProduct);
 
 //From Excel to DB
 router.get('/productExcel', RegisterProductsFromExcel);

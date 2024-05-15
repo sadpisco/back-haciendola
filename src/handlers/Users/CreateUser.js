@@ -11,7 +11,10 @@ const CreateUser = async function(req, res){
                     description: user.description
                 }
             });
-            res.status(202).send(`User ${user.username} has succesfully created.`);
+            res.status(202).send({
+                message: `User ${user.username} has succesfully been created.`,
+                status: true
+            });
         } else if (!user.description){
             let newUser = await Users.findOrCreate({
                 where: {
@@ -19,7 +22,10 @@ const CreateUser = async function(req, res){
                     password: user.password
                 }
             })
-            res.status(202).send(`User ${user.username} has succesfully created.`);
+            res.status(202).send({
+                message: `User ${user.username} has succesfully been created.`,
+                status: true
+            });
         };
     } catch (error) {
         console.log(error);

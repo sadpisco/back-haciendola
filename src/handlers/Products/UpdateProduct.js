@@ -1,23 +1,26 @@
+const { READCOMMITTED } = require('sequelize/lib/table-hints');
 const { Products } = require('../../database.js');
 
 const UpdateProduct = async function(req, res){
     try {
         const { id } = req.params;
-        const { handle, title, description, grams, stock, price, comparePrice, barcode } = req.body;
+        const {  title, stock, price, grams, comparePrice, barcode, handle, description } = req.body;
+        console.log(req.body );
         let proudctToUpdate = await Products.findAll({
             where: {
-                sku: id,
+                sku: id
             }
         });
 
         if (proudctToUpdate.length > 0){
-            const [ product, updatedProduct ] = await Products.update({ handle, title, description, grams, stock, price, comparePrice, barcode }, {
+            const [ product, updatedProduct ] = await Products.update({  title, stock, price, grams, comparePrice, barcode, handle, description }, {
                 where: {
                     sku: id,
-                    returning: true
                 }
             });
-            res.status(202).json(updatedProduct);
+            res.status(202).send({
+                message: `Product succesfully updated.`
+            });
         } else {
             res.status(404).send(`Product SKU ${id} was not found.`);
         };

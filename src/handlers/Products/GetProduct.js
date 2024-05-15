@@ -9,7 +9,7 @@ const GetProduct = async function(req, res){
             }
         });
         if (foundProduct.length > 0){
-            res.status(202).json(foundProduct);
+            res.status(202).json(foundProduct[0]);
         } else {
             res.status(404).send(`Product SKU ${id} was not found.`);
         };
