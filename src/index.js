@@ -14,7 +14,7 @@ app.use(router);
 
 conn.sync({force: false}).then(()=> {
     app.listen(port, () => {
-        console.log(`Server listening on port ${port}.`)
+        console.log(`Server is listening.`)
     });
 }).catch( error => console.log(error));
 

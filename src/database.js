@@ -9,6 +9,7 @@ const DB_PORT = process.env.DB_PORT;
 const DB_NAME = process.env.DB_NAME;
 const DB_CONNECTION = process.env.DB_CONNECTION;
 const port = process.env.PORT || 3000;
+
 const sequelize = new Sequelize(
     // `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`,
     // {
@@ -29,15 +30,16 @@ const sequelize = new Sequelize(
     }
 );
 
-// const testingConection = async function(){
-//     try {
-//         await sequelize.authenticate();
-//         console.log(`Succesfully connected to ${DB_NAME} in the PORT ${DB_PORT}`);
-//     } catch (error) {
-//        console.log(error);
-//     };
-//   };
-//   testingConection();
+const testingConection = async function(){
+    try {
+        await sequelize.authenticate();
+        // console.log(`Succesfully connected to ${DB_NAME} in the PORT ${DB_PORT}.`);
+        console.log(`Succesfully connected to ${DB_CONNECTION}.`);
+    } catch (error) {
+       console.log(error);
+    };
+  };
+  testingConection();
 
   const basename = path.basename(__filename);
   const modelDefiners = [];
