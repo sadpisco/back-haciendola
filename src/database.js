@@ -8,8 +8,7 @@ const DB_PASSWORD = process.env.DB_PASSWORD;
 const DB_PORT = process.env.DB_PORT;
 const DB_NAME = process.env.DB_NAME;
 const DB_CONNECTION = process.env.DB_CONNECTION;
-const port = process.env.PORT || 3000;
-
+const port = process.env.PORT || 3000;  
 const sequelize = new Sequelize(
     // `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`,
     // {
