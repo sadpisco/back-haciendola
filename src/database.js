@@ -16,7 +16,7 @@ const sequelize = new Sequelize(
     //     logging: false,
     //     native: false
     // }
-        DB_CONNECTION,
+        DB_CONNECTION_URL,
     {
         logging: false,
         native: false,
@@ -34,7 +34,7 @@ const testingConection = async function(){
     try {
         await sequelize.authenticate();
         // console.log(`Succesfully connected to ${DB_NAME} in the PORT ${DB_PORT}.`);
-        console.log(`Succesfully connected to ${DB_CONNECTION}.`);
+        console.log(`Succesfully connected to ${DB_CONNECTION_URL}.`);
     } catch (error) {
        console.log(error);
     };
