@@ -7,7 +7,7 @@ const DB_USER = process.env.DB_USER;
 const DB_PASSWORD = process.env.DB_PASSWORD;
 const DB_PORT = process.env.DB_PORT;
 const DB_NAME = process.env.DB_NAME;
-const DB_CONNECTION = process.env.DB_CONNECTION;
+const DB_CONNECTION_URL = process.env.DB_CONNECTION_URL;
 const port = process.env.PORT || 3000;
 
 const sequelize = new Sequelize(
